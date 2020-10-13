@@ -13,8 +13,16 @@ import qs from 'qs'
 
 
 // 配置axios请求相关设置
-axios.defaults.baseURL = 'http://localhost:8090/';
-// 将axios挂载到Vue原型上，并设置$http为原型调用
+axios.defaults.baseURL = 'http://localhost:8888/api/private/v1';
+// 设置axios拦截器，每次调用axios前都会调用此方法
+axios.interceptors.request.use(config => {
+    console.log(config);
+    // 在头部信息中添加对应的字段信息
+    config.headers.Authorization = sessionStorage.getItem('token');
+    // 最后需要返回config对象
+    return config;
+});
+// 将axios挂载到Vue原型上，
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
 // Vue.use(axios);

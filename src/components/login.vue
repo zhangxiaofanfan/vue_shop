@@ -32,8 +32,8 @@ export default {
         return {
             // 这是登录表单的数据绑定对象
             loginForm: {
-                username: 'zhangfan',
-                password: 'zhangfan9359'
+                username: 'admin',
+                password: '123456'
             },
             // 这是表单的验证规则对象
             loginFromRules: {
@@ -75,7 +75,7 @@ export default {
                     // 1. 将登录成功之后的token保存到客户端的sessionStorage中
                     //  1.1 项目中除了登录之外的其他API接口，必须在登录之后才能访问；
                     //  1.2 token智能在当前网站打开期间生效，所以将token保存在sessionStorage中；
-                    //  1.3 如果想要关闭会话还生效，设置过期时间的话，需要将token保存在localStorage中
+                    //  1.3 如果想要关闭会话还生效，设置过期时间的话，需要将token保存在localStorage中;
                     sessionStorage.setItem('token', result.data.token);
                     // 2. 通过编程式导航，跳转到后台主页，路由地址是/home
                     this.$router.push('/home');

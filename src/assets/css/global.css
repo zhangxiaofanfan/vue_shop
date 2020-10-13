@@ -11,3 +11,23 @@ body,
 #app {
     height: 100%;
 }
+
+.el-breadcrumb {
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.el-card {
+    /* element ui本身权值较高，增加important关键字，提高自定义权重，使得样式显示出来 */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15) !important;
+}
+
+.el-table {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.el-pagination {
+    margin-top: 15px;
+    font-size: 12px;
+}
