@@ -10,6 +10,7 @@ import './assets/fonts/iconfont.css'
 import axios from 'axios'
 // 引入qs包
 import qs from 'qs'
+import TreeTable from 'vue-table-with-tree-grid'
 
 
 // 配置axios请求相关设置
@@ -28,6 +29,9 @@ Vue.prototype.$qs = qs;
 // Vue.use(axios);
 
 Vue.config.productionTip = false
+
+// 将tree-table加载到component组件上
+Vue.component('tree-table', TreeTable)
 
 new Vue({
     router,
