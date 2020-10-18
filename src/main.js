@@ -11,6 +11,12 @@ import axios from 'axios'
 // 引入qs包
 import qs from 'qs'
 import TreeTable from 'vue-table-with-tree-grid'
+// 导入富文本编辑器
+import VueQuillEditor from 'vue-quill-editor'
+// 导入富文本编辑器对应的样式文件
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 
 
 // 配置axios请求相关设置
@@ -31,7 +37,27 @@ Vue.prototype.$qs = qs;
 Vue.config.productionTip = false
 
 // 将tree-table加载到component组件上
-Vue.component('tree-table', TreeTable)
+Vue.component('tree-table', TreeTable);
+// 将富文本编辑器进行全局注册
+Vue.use(VueQuillEditor)
+
+// 注册全局的时间过滤器
+Vue.filter('dateFormet', originVal => {
+    const dt = new Date(originVal)
+
+    const year = dt.getFullYear()
+    const month = (dt.getMonth() + 1 + '').padStart(2, '0')
+    const date = (dt.getDate() + '').padStart(2, '0')
+
+    const hh = (dt.getHours() + '').padStart(2, '0')
+    const mm = (dt.getMinutes() + '').padStart(2, '0')
+    const ss = (dt.getSeconds() + '').padStart(2, '0')
+
+    return `${year}-${month}-${date} ${hh}:${mm}:${ss}`
+})
+Vue.filter('intToStr', intVal => {
+    return intVal + ''
+})
 
 new Vue({
     router,
